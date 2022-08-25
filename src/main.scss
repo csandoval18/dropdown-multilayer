@@ -1,0 +1,117 @@
+// Use only scss to create a horizontal dropdown that has flyouts.  Do not worry about responsive for this exercise.
+
+$nav-dark: rgb(34, 34, 34);
+$nav-light: rgb(240, 255, 240);
+$menu-green-dark: rgb(91, 146, 121);
+$menu-green: rgb(138, 178, 153);
+$menu-green-light: rgb(150, 194, 174);
+$grey-text: #74747c;
+$navbar-height: 3rem;
+
+* {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+body {
+	min-height: 100vh;
+}
+
+nav {
+	height: $navbar-height;
+	background-color: $nav-dark;
+	color: $grey-text;
+	ul {
+		list-style: none;
+	}
+}
+
+a {
+	color: $grey-text;
+	text-decoration: none;
+}
+
+// Top Nav Options
+.top-level {
+	display: flex;
+	height: $navbar-height;
+	padding-left: 1rem;
+	gap: 2rem;
+	font-weight: 550;
+
+	li {
+		height: $navbar-height;
+		&:hover .drop-down {
+			display: block;
+		}
+	}
+
+	span {
+		display: flex;
+		height: $navbar-height;
+		align-items: center;
+	}
+
+	// Hover color effect for nav options
+	span:hover {
+		color: $menu-green-dark;
+	}
+}
+
+.drop-down {
+	display: none;
+	padding: 0;
+	position: absolute;
+	background-color: $menu-green-dark;
+	margin-left: -20px;
+	width: 12rem;
+
+	// Navbar Options text color
+	span {
+		color: white;
+		//width of span for second dropdown
+		min-width: 176px;
+		&:hover {
+			color: white;
+		}
+	}
+	li {
+		display: flex;
+		padding: 0 1rem;
+		align-items: center;
+		height: 2.8rem;
+		&:hover {
+			background-color: $menu-green;
+			// Display the fly-out options dropdown
+			.fly-out {
+				display: flex;
+				flex-direction: column;
+				margin-top: auto;
+			}
+		}
+	}
+}
+
+.fly-out {
+	display: none;
+	padding: 0;
+	span {
+		min-width: 202px;
+	}
+
+	li {
+		background-color: $menu-green;
+		width: 12rem;
+		&:hover {
+			background-color: $menu-green-light;
+			ul li {
+				display: flex;
+				margin: 0;
+				pad: 0;
+			}
+		}
+		ul li {
+			display: none;
+			background-color: $menu-green-light;
+		}
+	}
+}
